@@ -1,16 +1,16 @@
 function updateEmployeeWithKeyAndValue(employee, key, value) {
-  /*updated = Object.assign({}, employee, { [key]: value });
+  /*const updated = Object.assign({}, employee, { [key]: value });
   return updated*/
-  return { ...employee, ...{[key]:value}}
+  return { ...employee, ...{[key]:value}
   }
-
+  
 function destructivelyUpdateEmploeeWithKeyAndValue(employee, key, value) {
-  employee[key]= value
+  employee[key]= value;
   return employee
 }
 
 function deleteFromEmployeeByKey(employee, key) {
-  /*updated = Object.assign({}, employee)
+  /*const updated = Object.assign({}, employee)
   delete updated[key];
   return updated;*/
   new = {... employee}
@@ -18,7 +18,13 @@ function deleteFromEmployeeByKey(employee, key) {
   return new
 }
 
-destructivelyDeleteFromEmployeeByKey(employee, key){
-  delete employee[key];
-  return employee
-}
+function deleteFromEmployeeByKey(employee, key) {
+    // Alternate using ES6 Spread operators:
+    // const newObj = { ...employee }
+    const newObj = Object.assign({}, employee);
+  
+    delete newObj[key];
+  
+    return newObj;
+  }
+  
